@@ -365,6 +365,12 @@
                 }
             });
 
+            ed.on('remove', function (e) {
+                if (!!autoComplete) {
+                    autoComplete.cleanUp(false);
+                }
+            });
+
         },
 
         getInfo: function () {
