@@ -15,6 +15,7 @@
 
         this.matcher = this.options.matcher || this.matcher;
         this.renderDropdown = this.options.renderDropdown || this.renderDropdown;
+        this.onDropdownAppend = this.options.onDropdownAppend || this.onDropdownAppend;
         this.render = this.options.render || this.render;
         this.insert = this.options.insert || this.insert;
         this.highlighter = this.options.highlighter || this.highlighter;
@@ -206,9 +207,12 @@
                                 .css({ 'top': offset.top, 'left': offset.left });
 
             $('body').append(this.$dropdown);
+            this.onDropdownAppend(this.$dropdown);
 
             this.$dropdown.on('click', $.proxy(this.autoCompleteClick, this));
         },
+
+        onDropdownAppend: function(dropdown) {},
 
         process: function (data) {
             if (!this.hasFocus) {
